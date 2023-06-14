@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
 public class SecurityConfiguration {
@@ -21,23 +22,28 @@ public class SecurityConfiguration {
   public SecurityFilterChain securityFilterChain(HttpSecurity h) throws Exception{
     h.cors();
     h.csrf().disable()
-      .authorizeHttpRequests()
-      .requestMatchers(HttpMethod.GET, "/users", "/users/{username}","/restaurants", "/{restaurantID}/items")
-      .permitAll()
-      .requestMatchers(HttpMethod.POST, "/users")
-      .permitAll()
-      .requestMatchers("/auth")
-      .authenticated()
-      .requestMatchers("/login")
-      .authenticated()
-      .requestMatchers(HttpMethod.POST, "/restaurants", "/items")
-      .hasRole("OWNER")
-      .anyRequest()// Unless specified, all url pages will fall under anyRequests(). You would need to specify the type of security such as permit all or authentication for it to work. Think firewalls where the last rules deny all packets
-      .authenticated()
-      .and()
-      .formLogin()
-      .and()
-      .httpBasic();
+            .authorizeHttpRequests()
+            .requestMatchers(HttpMethod.GET, "/users", "/users/{username}","/restaurants", "/{restaurantID}/items")
+            .permitAll()
+            .requestMatchers(HttpMethod.POST, "/users")
+            .permitAll()
+            .requestMatchers("/authenticated")
+            .authenticated()
+            .requestMatchers("/login")
+            .authenticated()
+            .requestMatchers(HttpMethod.POST, "/restaurants", "/items")
+            .hasRole("OWNER")
+            .anyRequest()// Unless specified, all url pages will fall under anyRequests(). You would need to specify the type of security such as permit all or authentication for it to work. Think firewalls where the last rules deny all packets
+            .authenticated()
+            .and()
+            .formLogin()
+            .and()
+            .logout()
+            .logoutUrl("/logout")
+            .invalidateHttpSession(true)
+            .deleteCookies("JSESSIONID")
+            .and()
+            .httpBasic();
 
     return h.build();
 
