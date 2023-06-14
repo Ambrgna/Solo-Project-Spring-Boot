@@ -1,5 +1,8 @@
 package com.genspark.SpringBootdemoApplication.Configuration;
 
+import com.genspark.SpringBootdemoApplication.Dao.UserDeo;
+import com.genspark.SpringBootdemoApplication.Entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,14 +17,12 @@ public class SecurityConfiguration {
   @Bean
   public PasswordEncoder passwordEncoder(){return new BCryptPasswordEncoder();}
 
-
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity h) throws Exception{
-    //This cors method was needed
     h.cors();
     h.csrf().disable()
       .authorizeHttpRequests()
-      .requestMatchers(HttpMethod.GET, "/restaurants", "/{restaurantID}/items")
+      .requestMatchers(HttpMethod.GET, "/users", "/users/{username}","/restaurants", "/{restaurantID}/items")
       .permitAll()
       .requestMatchers(HttpMethod.POST, "/users")
       .permitAll()

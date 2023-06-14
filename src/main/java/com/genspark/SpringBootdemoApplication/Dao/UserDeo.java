@@ -9,4 +9,5 @@ import java.util.List;
 
 @Repository
 public interface UserDeo extends JpaRepository<User, Integer> {
+    User findByUsername(String u);
 }

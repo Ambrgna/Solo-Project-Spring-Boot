@@ -21,9 +21,9 @@ public class UserController {
     public List<User> getUsers(){
         return this.userService.getAllUsers();
     }
-    @GetMapping("/{userID}")
-    public User getUser(@PathVariable String userID){
-        return this.userService.getUserById(Integer.parseInt(userID));
+    @GetMapping("/{username}")
+    public User getUser(@PathVariable String username){
+        return this.userService.getUserByUsername(username);
     }
     @PostMapping
     public User addUser(@RequestBody User user){

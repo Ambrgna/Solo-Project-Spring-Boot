@@ -1,6 +1,8 @@
 package com.genspark.SpringBootdemoApplication.Entity;
 
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Date;
 
@@ -15,12 +17,15 @@ public class User {
     private String username;
     @Column(nullable = false)
     private String password;
-    @Column(updatable = false, columnDefinition = "default 'ROLE_USER'")
+    @Column(updatable = false/*, columnDefinition = "varchar(255) default ''ROLE_USER'"*/)
     private String role;
     private boolean disabled = false;
     @Column(updatable = false)
     private Date created_at = new Date();
     private Date removed_at;
+
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
 
     public User() {
     }
@@ -28,6 +33,7 @@ public class User {
     public User(int userId, String username, String password, String role, boolean disabled, Date created_at, Date removed_at) {
         this.userId = userId;
         this.username = username;
+//        System.out.println(passwordEncoder.encode("password"));
         this.password = password;
         this.role = role;
         this.disabled = disabled;
