@@ -16,7 +16,11 @@ public class Item {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private int price;
+    private double price;
+    @Column(nullable = false)
+    private String category;
+    private String description;
+    private String path;
     private boolean disabled = false;
     @Column(updatable = false)
     private Date created_at = new Date();
@@ -25,11 +29,13 @@ public class Item {
     public Item() {
     }
 
-    public Item(int itemId, int restaurantId, String name, int price, boolean disabled, Date created_at, Date removed_at) {
+    public Item(int itemId, int restaurantId, String name, double price, String category, String description, boolean disabled, Date created_at, Date removed_at) {
         this.itemId = itemId;
         this.restaurantId = restaurantId;
         this.name = name;
         this.price = price;
+        this.category = category;
+        this.description = description;
         this.disabled = disabled;
         this.created_at = created_at;
         this.removed_at = removed_at;
@@ -59,12 +65,28 @@ public class Item {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public boolean isDisabled() {
