@@ -19,24 +19,21 @@ public class User {
     private String password;
     @Column(updatable = false/*, columnDefinition = "varchar(255) default ''ROLE_USER'"*/)
     private String role;
-    private boolean disabled = false;
+    private boolean enabled = true;
     @Column(updatable = false)
     private Date created_at = new Date();
     private Date removed_at;
 
-//    @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
-
     public User() {
     }
 
-    public User(int userId, String username, String password, String role, boolean disabled, Date created_at, Date removed_at) {
+    public User(int userId, String username, String password, String role, boolean enabled, Date created_at, Date removed_at) {
         this.userId = userId;
         this.username = username;
 //        System.out.println(passwordEncoder.encode("password"));
         this.password = password;
         this.role = role;
-        this.disabled = disabled;
+        this.enabled = enabled;
         this.created_at = created_at;
         this.removed_at = removed_at;
     }
@@ -73,12 +70,12 @@ public class User {
         this.role = role;
     }
 
-    public boolean isDisabled() {
-        return disabled;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setDisabled(boolean disabled) {
-        this.disabled = disabled;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Date getCreated_at() {

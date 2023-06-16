@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new RuntimeException(" User not found for id :: " + userID);
         }
-        user.setDisabled(true);
+        user.setEnabled(false);
         user.setRemoved_at(new Date());
         this.userDeo.save(user);
         return "Removed Successfully";
