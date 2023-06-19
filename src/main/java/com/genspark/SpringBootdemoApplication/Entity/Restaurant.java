@@ -18,7 +18,7 @@ public class Restaurant {
     @Column(nullable = false)
     private int price;
     private String address;
-    private int phone;
+    private String phone;
     private boolean disabled = false;
     @Column(updatable = false)
     private Date created_at = new Date();
@@ -27,7 +27,7 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(int restaurantId, int owner, String name, int price, String address, int phone, boolean disabled, Date created_at, Date removed_at) {
+    public Restaurant(int restaurantId, int owner, String name, int price, String address, String phone, boolean disabled, Date created_at, Date removed_at) {
         this.restaurantId = restaurantId;
         this.owner = owner;
         this.name = name;
@@ -79,11 +79,11 @@ public class Restaurant {
         this.address = address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
