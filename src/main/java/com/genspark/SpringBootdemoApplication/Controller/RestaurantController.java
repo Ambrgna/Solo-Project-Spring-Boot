@@ -17,6 +17,10 @@ public class RestaurantController {
     public List<Restaurant> getRestaurants(){
         return this.restaurantService.getAllRestaurants();
     }
+    @GetMapping("/owner/{ownerID}")
+    public List<Restaurant> getRestaurantsByOwner(@PathVariable String ownerID){
+        return this.restaurantService.getAllByOwner(Integer.parseInt(ownerID));
+    }
     @GetMapping("/{restaurantID}")
     public Restaurant getRestaurant(@PathVariable String restaurantID){
         return this.restaurantService.getRestaurantById(Integer.parseInt(restaurantID));

@@ -25,6 +25,10 @@ public class UserController {
     public User getUser(@PathVariable String username){
         return this.userService.getUserByUsername(username);
     }
+    @GetMapping("/users/id/{id}")
+    public User getUserById(@PathVariable String id){
+        return this.userService.getUserById(Integer.parseInt(id));
+    }
     @PostMapping("/users")
     public User addUser(@RequestBody User user){
         return this.userService.addUser(user);

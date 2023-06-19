@@ -18,6 +18,10 @@ public class RestaurantServiceImpl implements RestaurantService {
     public List<Restaurant> getAllRestaurants() {
         return this.restaurantDeo.findAll();
     }
+    @Override
+    public List<Restaurant> getAllByOwner(int owner) {
+        return this.restaurantDeo.findAllByOwner(owner);
+    }
 
     @Override
     public Restaurant getRestaurantById(int restaurantID) {
