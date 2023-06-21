@@ -29,16 +29,25 @@ public class Item {
     public Item() {
     }
 
-    public Item(int itemId, int restaurantId, String name, double price, String category, String description, boolean disabled, Date created_at, Date removed_at) {
+    public Item(int itemId, int restaurantId, String name, double price, String category, String description, String path, boolean disabled, Date created_at, Date removed_at) {
         this.itemId = itemId;
         this.restaurantId = restaurantId;
         this.name = name;
         this.price = price;
         this.category = category;
         this.description = description;
+        this.path = path;
         this.disabled = disabled;
         this.created_at = created_at;
         this.removed_at = removed_at;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public int getItemId() {

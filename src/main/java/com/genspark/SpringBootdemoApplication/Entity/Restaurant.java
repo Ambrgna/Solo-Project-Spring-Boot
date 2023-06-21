@@ -17,8 +17,13 @@ public class Restaurant {
     private String name;
     @Column(nullable = false)
     private int price;
+    @Column(nullable = false)
     private String address;
+    @Column(nullable = false)
     private String phone;
+    private String imgPath;
+    @Column(nullable = false)
+    private String filePath;
     private boolean disabled = false;
     @Column(updatable = false)
     private Date created_at = new Date();
@@ -27,13 +32,15 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(int restaurantId, int owner, String name, int price, String address, String phone, boolean disabled, Date created_at, Date removed_at) {
+    public Restaurant(int restaurantId, int owner, String name, int price, String address, String phone, String imgPath, String filePath, boolean disabled, Date created_at, Date removed_at) {
         this.restaurantId = restaurantId;
         this.owner = owner;
         this.name = name;
         this.price = price;
         this.address = address;
         this.phone = phone;
+        this.imgPath = imgPath;
+        this.filePath = filePath;
         this.disabled = disabled;
         this.created_at = created_at;
         this.removed_at = removed_at;
@@ -85,6 +92,22 @@ public class Restaurant {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public boolean isDisabled() {
