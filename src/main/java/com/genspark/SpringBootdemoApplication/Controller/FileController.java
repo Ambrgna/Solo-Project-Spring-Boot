@@ -15,16 +15,15 @@ import java.util.List;
 public class FileController {
     @Autowired
     private FileService fileService;
-
-    @PostMapping("/upload")
-    public String handleAppUploadForm(Model model,
-                                   @RequestParam("file") MultipartFile multipart) {
-        return this.fileService.handleAppUploadForm(model, multipart);
+    @PostMapping("/upload/pdf")
+    public String handleUploadPDF(Model model,
+                                      @RequestParam("file") MultipartFile multipart) {
+        return this.fileService.handleUploadPDF(model, multipart);
     }
 
-    @PostMapping("/upload/image")
-    public String handleImageUploadForm(Model model,
+    @PostMapping("/upload/jpg")
+    public String handleUploadImage(Model model,
                                    @RequestParam("file") MultipartFile multipart) {
-        return this.fileService.handleImageUploadForm(model, multipart);
+        return this.fileService.handleUploadImage(model, multipart);
     }
 }

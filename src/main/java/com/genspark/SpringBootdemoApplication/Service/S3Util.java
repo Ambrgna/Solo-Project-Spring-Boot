@@ -13,7 +13,7 @@ import java.io.InputStream;
 public class S3Util {
     private static final String BUCKET = "rfsp";
 
-    public static void upload(String fileName, InputStream inputStream)
+    public static void uploadPDF(String fileName, InputStream inputStream)
             throws S3Exception, AwsServiceException, SdkClientException, IOException {
         S3Client client = S3Client.builder().build();
 
@@ -21,14 +21,14 @@ public class S3Util {
                 .bucket(BUCKET)
                 .key(fileName)
                 .acl("public-read")
-                .contentType("image/jpg, application/pdf, application/doc")
+                .contentDisposition("inline")
+                .contentType("application/pdf")
                 .build();
 
         client.putObject(request,
                 RequestBody.fromInputStream(inputStream, inputStream.available()));
     }
-
-    public static void uploadImage(String fileName, InputStream inputStream)
+    public static void uploadImg(String fileName, InputStream inputStream)
             throws S3Exception, AwsServiceException, SdkClientException, IOException {
         S3Client client = S3Client.builder().build();
 

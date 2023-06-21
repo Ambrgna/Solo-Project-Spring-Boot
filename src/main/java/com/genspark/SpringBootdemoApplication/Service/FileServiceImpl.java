@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class FileServiceImpl implements FileService {
     @Override
-    public String handleAppUploadForm(Model model, MultipartFile multipart) {
+    public String handleUploadPDF(Model model, MultipartFile multipart) {
         String fileName = multipart.getOriginalFilename();
 
         System.out.println("filename: " + fileName);
@@ -15,7 +15,7 @@ public class FileServiceImpl implements FileService {
         String message = "";
 
         try {
-            S3Util.upload(fileName, multipart.getInputStream());
+            S3Util.uploadPDF(fileName, multipart.getInputStream());
             message = "Your file has been uploaded successfully!";
         } catch (Exception ex) {
             message = "Error uploading file: " + ex.getMessage();
@@ -27,7 +27,7 @@ public class FileServiceImpl implements FileService {
         return "message";
     }
     @Override
-    public String handleImageUploadForm(Model model, MultipartFile multipart) {
+    public String handleUploadImage(Model model, MultipartFile multipart) {
         String fileName = multipart.getOriginalFilename();
 
         System.out.println("filename: " + fileName);
@@ -35,7 +35,7 @@ public class FileServiceImpl implements FileService {
         String message = "";
 
         try {
-            S3Util.uploadImage(fileName, multipart.getInputStream());
+            S3Util.uploadImg(fileName, multipart.getInputStream());
             message = "Your file has been uploaded successfully!";
         } catch (Exception ex) {
             message = "Error uploading file: " + ex.getMessage();
