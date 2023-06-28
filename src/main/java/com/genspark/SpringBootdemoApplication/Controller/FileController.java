@@ -1,6 +1,6 @@
 package com.genspark.SpringBootdemoApplication.Controller;
 
-import com.genspark.SpringBootdemoApplication.Entity.Item;
+import com.genspark.SpringBootdemoApplication.Entity.Project;
 import com.genspark.SpringBootdemoApplication.Service.FileService;
 import com.genspark.SpringBootdemoApplication.Service.S3Util;
 import org.springframework.beans.factory.annotation.Autowired;

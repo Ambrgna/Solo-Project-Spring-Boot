@@ -17,7 +17,7 @@ public class User {
     private String username;
     @Column(nullable = false)
     private String password;
-    @Column(updatable = false/*, columnDefinition = "varchar(255) default ''ROLE_USER'"*/)
+    @Column(updatable = false)
     private String role;
     private boolean enabled = true;
     @Column(updatable = false)

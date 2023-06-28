@@ -5,65 +5,49 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="tbl_items")
-public class Item {
+@Table(name="tbl_projects")
+public class Project {
     @Id
-    @Column(name="i_id")
+    @Column(name = "p_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int itemId;
+    private int projectId;
     @Column(nullable = false)
-    private int restaurantId;
+    private int clientId;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
-    private double price;
-    @Column(nullable = false)
-    private String category;
     private String description;
-    private String path;
     private boolean disabled = false;
     @Column(updatable = false)
     private Date created_at = new Date();
     private Date removed_at;
 
-    public Item() {
+    public Project() {
     }
 
-    public Item(int itemId, int restaurantId, String name, double price, String category, String description, String path, boolean disabled, Date created_at, Date removed_at) {
-        this.itemId = itemId;
-        this.restaurantId = restaurantId;
+    public Project(int projectId, int clientId, String name, String description, boolean disabled, Date created_at, Date removed_at) {
+        this.projectId = projectId;
+        this.clientId = clientId;
         this.name = name;
-        this.price = price;
-        this.category = category;
         this.description = description;
-        this.path = path;
         this.disabled = disabled;
         this.created_at = created_at;
         this.removed_at = removed_at;
     }
 
-    public String getPath() {
-        return path;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 
-    public int getItemId() {
-        return itemId;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
-
-    public int getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public String getName() {
@@ -72,22 +56,6 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getDescription() {
