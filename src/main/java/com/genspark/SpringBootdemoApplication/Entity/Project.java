@@ -14,6 +14,10 @@ public class Project {
     @Column(nullable = false)
     private int clientId;
     @Column(nullable = false)
+    private int[] teamLeads;
+    @Column
+    private int[] teamMembers;
+    @Column(nullable = false)
     private String name;
     private String description;
     private boolean disabled = false;
@@ -24,9 +28,11 @@ public class Project {
     public Project() {
     }
 
-    public Project(int projectId, int clientId, String name, String description, boolean disabled, Date created_at, Date removed_at) {
+    public Project(int projectId, int clientId, int[] teamLeads, int[] teamMembers, String name, String description, boolean disabled, Date created_at, Date removed_at) {
         this.projectId = projectId;
         this.clientId = clientId;
+        this.teamLeads = teamLeads;
+        this.teamMembers = teamMembers;
         this.name = name;
         this.description = description;
         this.disabled = disabled;
@@ -48,6 +54,22 @@ public class Project {
 
     public void setClientId(int clientId) {
         this.clientId = clientId;
+    }
+
+    public int[] getTeamLeads() {
+        return teamLeads;
+    }
+
+    public void setTeamLeads(int[] teamLeads) {
+        this.teamLeads = teamLeads;
+    }
+
+    public int[] getTeamMembers() {
+        return teamMembers;
+    }
+
+    public void setTeamMembers(int[] teamMembers) {
+        this.teamMembers = teamMembers;
     }
 
     public String getName() {

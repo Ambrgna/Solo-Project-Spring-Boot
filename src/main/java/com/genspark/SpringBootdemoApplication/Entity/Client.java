@@ -8,15 +8,23 @@ import java.util.Date;
 @Table(name="tbl_clients")
 public class Client {
     @Id
-    @Column(name="c_id")
+    @Column(name = "c_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int clientId;
     @Column(nullable = false)
     private int userId;
     @Column(nullable = false)
     private String name;
+    @Column(columnDefinition = "varchar(250)")
+    private String description;
+    @Column(nullable = false)
+    private boolean visibility;
+    @Column(nullable = false)
+    private int[] canView;
     @Column(nullable = false)
     private String agreementPath;
+    @Column
+    private String logoPath;
     private boolean disabled = false;
     @Column(updatable = false)
     private Date created_at = new Date();
@@ -25,11 +33,15 @@ public class Client {
     public Client() {
     }
 
-    public Client(int clientId, int userId, String name, String agreementPath, boolean disabled, Date created_at, Date removed_at) {
+    public Client(int clientId, int userId, String name, String description, boolean visibility, int[] canView, String agreementPath, String logoPath, boolean disabled, Date created_at, Date removed_at) {
         this.clientId = clientId;
         this.userId = userId;
         this.name = name;
+        this.description = description;
+        this.visibility = visibility;
+        this.canView = canView;
         this.agreementPath = agreementPath;
+        this.logoPath = logoPath;
         this.disabled = disabled;
         this.created_at = created_at;
         this.removed_at = removed_at;
@@ -59,12 +71,44 @@ public class Client {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(boolean visibility) {
+        this.visibility = visibility;
+    }
+
+    public int[] getCanView() {
+        return canView;
+    }
+
+    public void setCanView(int[] canView) {
+        this.canView = canView;
+    }
+
     public String getAgreementPath() {
         return agreementPath;
     }
 
     public void setAgreementPath(String agreementPath) {
         this.agreementPath = agreementPath;
+    }
+
+    public String getLogoPath() {
+        return logoPath;
+    }
+
+    public void setLogoPath(String logoPath) {
+        this.logoPath = logoPath;
     }
 
     public boolean isDisabled() {

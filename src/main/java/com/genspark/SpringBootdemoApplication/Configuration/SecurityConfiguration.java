@@ -45,9 +45,10 @@ public class SecurityConfiguration {
             .requestMatchers("/login")
             .authenticated()
             .requestMatchers(HttpMethod.POST, "/clients", "/projects", "/clients/upload", "/projects/upload")
-            .hasRole("OWNER")
-//            .authenticated()
+            .hasRole("LEAD")
+//            .permitAll()
             .anyRequest()// Unless specified, all url pages will fall under anyRequests(). You would need to specify the type of security such as permit all or authentication for it to work. Think firewalls where the last rules deny all packets
+//            .permitAll()
             .authenticated()
             .and()
             .formLogin()
