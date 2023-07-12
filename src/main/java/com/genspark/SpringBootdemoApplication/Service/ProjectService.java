@@ -11,5 +11,6 @@ public interface ProjectService {
     Project getProjectById(int clientID);
     Project addProject(Project client);
     Project updateProject(Project client);
+    String disableProjectById(int clientID);
     String deleteProjectById(int clientID);
 }

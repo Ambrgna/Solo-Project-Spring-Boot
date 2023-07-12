@@ -2,6 +2,7 @@ package com.genspark.SpringBootdemoApplication.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Arrays;
 import java.util.Date;
 
 @Entity
@@ -30,7 +31,15 @@ public class Project {
     public Project() {
     }
 
-    public Project(int projectId, int clientId,int owner, int[] teamLeads, int[] teamMembers, String name, String description, boolean disabled, Date created_at, Date removed_at) {
+    public Project(int clientId,int owner, int[] teamLeads, int[] teamMembers, String name, String description) {
+        this.clientId = clientId;
+        this.owner = owner;
+        this.teamLeads = teamLeads;
+        this.teamMembers = teamMembers;
+        this.name = name;
+        this.description = description;
+    }
+    public Project(int projectId, int clientId,int owner, int[] teamLeads, int[] teamMembers, String name, String description) {
         this.projectId = projectId;
         this.clientId = clientId;
         this.owner = owner;
@@ -38,9 +47,6 @@ public class Project {
         this.teamMembers = teamMembers;
         this.name = name;
         this.description = description;
-        this.disabled = disabled;
-        this.created_at = created_at;
-        this.removed_at = removed_at;
     }
 
     public int getProjectId() {
@@ -117,5 +123,20 @@ public class Project {
 
     public void setRemoved_at(Date removed_at) {
         this.removed_at = removed_at;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "projectId=" + projectId +
+                ", clientId=" + clientId +
+                ", owner=" + owner +
+                ", teamLeads=" + Arrays.toString(teamLeads) +
+                ", teamMembers=" + Arrays.toString(teamMembers) +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", disabled=" + disabled +
+                ", removed_at=" + removed_at +
+                '}';
     }
 }

@@ -27,15 +27,16 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String username, String password, String role, boolean enabled, Date created_at, Date removed_at) {
-        this.userId = userId;
+    public User(String username, String password, String role) {
         this.username = username;
-//        System.out.println(passwordEncoder.encode("password"));
         this.password = password;
         this.role = role;
-        this.enabled = enabled;
-        this.created_at = created_at;
-        this.removed_at = removed_at;
+    }
+    public User(int userId, String username, String password, String role) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 
     public int getUserId() {
@@ -92,5 +93,17 @@ public class User {
 
     public void setRemoved_at(Date removed_at) {
         this.removed_at = removed_at;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", enabled=" + enabled +
+                ", removed_at=" + removed_at +
+                '}';
     }
 }

@@ -46,7 +46,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public String deleteClientById(int clientID) {
+    public String disableClientById(int clientID) {
         Optional <Client> r = this.clientDeo.findById(clientID);
         Client client = null;
         if (r.isPresent()){
@@ -57,7 +57,11 @@ public class ClientServiceImpl implements ClientService {
         client.setDisabled(true);
         client.setRemoved_at(new Date());
         this.clientDeo.save(client);
-//        this.clientDeo.deleteById(clientID);
+        return "Removed Successfully";
+    }
+    @Override
+    public String deleteClientById(int clientID) {
+        this.clientDeo.deleteById(clientID);
         return "Removed Successfully";
     }
 }

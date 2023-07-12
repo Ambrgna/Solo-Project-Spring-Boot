@@ -11,5 +11,6 @@ public interface UserService {
     User getUserByUsername(String username);
     User addUser(User user);
     User updateUser(User user);
-    String deleteUserById(int userID);
+    String disableUserById(int userID);
+    String deleteUserById(int clientID);
 }

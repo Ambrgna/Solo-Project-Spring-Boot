@@ -2,6 +2,7 @@ package com.genspark.SpringBootdemoApplication.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Arrays;
 import java.util.Date;
 
 @Entity
@@ -33,7 +34,16 @@ public class Client {
     public Client() {
     }
 
-    public Client(int clientId, int userId, String name, String description, boolean visibility, int[] canView, String agreementPath, String logoPath, boolean disabled, Date created_at, Date removed_at) {
+    public Client(int userId, String name, String description, boolean visibility, int[] canView, String agreementPath, String logoPath) {
+        this.userId = userId;
+        this.name = name;
+        this.description = description;
+        this.visibility = visibility;
+        this.canView = canView;
+        this.agreementPath = agreementPath;
+        this.logoPath = logoPath;
+    }
+    public Client(int clientId, int userId, String name, String description, boolean visibility, int[] canView, String agreementPath, String logoPath) {
         this.clientId = clientId;
         this.userId = userId;
         this.name = name;
@@ -42,9 +52,6 @@ public class Client {
         this.canView = canView;
         this.agreementPath = agreementPath;
         this.logoPath = logoPath;
-        this.disabled = disabled;
-        this.created_at = created_at;
-        this.removed_at = removed_at;
     }
 
     public int getClientId() {
@@ -133,5 +140,21 @@ public class Client {
 
     public void setRemoved_at(Date removed_at) {
         this.removed_at = removed_at;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "clientId=" + clientId +
+                ", userId=" + userId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", visibility=" + visibility +
+                ", canView=" + Arrays.toString(canView) +
+                ", agreementPath='" + agreementPath + '\'' +
+                ", logoPath='" + logoPath + '\'' +
+                ", disabled=" + disabled +
+                ", removed_at=" + removed_at +
+                '}';
     }
 }

@@ -52,8 +52,8 @@ public class Controller {
         return this.userService.updateUser(user);
     }
     @DeleteMapping("/users/{userID}")
-    public String deleteUser(@PathVariable String userID){
-        return this.userService.deleteUserById(Integer.parseInt(userID));
+    public String disableUser(@PathVariable String userID){
+        return this.userService.disableUserById(Integer.parseInt(userID));
     }
 
     /* End of Users Request */
@@ -80,8 +80,8 @@ public class Controller {
         return this.clientService.updateClient(client);
     }
     @DeleteMapping("/clients/{clientID}")
-    public String deleteClient(@PathVariable String clientID) {
-        return this.clientService.deleteClientById(Integer.parseInt(clientID));
+    public String disableClient(@PathVariable String clientID) {
+        return this.clientService.disableClientById(Integer.parseInt(clientID));
     }
 
     /* End of Clients Request */
@@ -104,8 +104,8 @@ public class Controller {
         return this.projectService.updateProject(project);
     }
     @DeleteMapping("/projects/{projectID}")
-    public String deleteProject(@PathVariable String projectID){
-        return this.projectService.deleteProjectById(Integer.parseInt(projectID));
+    public String disableProject(@PathVariable String projectID){
+        return this.projectService.disableProjectById(Integer.parseInt(projectID));
     }
 
     /* End of Projects Request */

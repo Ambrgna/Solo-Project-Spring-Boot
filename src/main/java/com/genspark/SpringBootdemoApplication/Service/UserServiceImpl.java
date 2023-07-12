@@ -49,24 +49,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User user) {
-        User userFound = null;
-        List<User> list = this.userDeo.findAll();
-
-        for(int i=0;i<list.size();i++){
-            if(list.get(i).getUsername().equals(user.getUsername())){
-                userFound=list.get(i);
-            }
-        }
-        if(userFound==null){
-            throw new RuntimeException("Username not found for username :: " + user.getUsername());
-        }
-
-        userFound.setPassword(passwordEncoder.encode(user.getPassword()));
         return this.userDeo.save(user);
+//        User userFound = null;
+//        List<User> list = this.userDeo.findAll();
+//
+//        for(int i=0;i<list.size();i++){
+//            if(list.get(i).getUsername().equals(user.getUsername())){
+//                userFound=list.get(i);
+//            }
+//        }
+//        if(userFound==null){
+//            throw new RuntimeException("Username not found for username :: " + user.getUsername());
+//        }
+//
+//        userFound.setPassword(passwordEncoder.encode(user.getPassword()));
+//        return this.userDeo.save(user);
     }
 
     @Override
-    public String deleteUserById(int userID) {
+    public String disableUserById(int userID) {
         Optional <User> u = this.userDeo.findById(userID);
         User user = null;
         if (u.isPresent()){
@@ -77,6 +78,11 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(false);
         user.setRemoved_at(new Date());
         this.userDeo.save(user);
+        return "Removed Successfully";
+    }
+    @Override
+    public String deleteUserById(int clientID) {
+        this.userDeo.deleteById(clientID);
         return "Removed Successfully";
     }
 }

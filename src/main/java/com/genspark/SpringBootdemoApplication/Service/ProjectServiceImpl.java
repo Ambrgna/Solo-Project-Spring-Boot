@@ -45,7 +45,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public String deleteProjectById(int projectID) {
+    public String disableProjectById(int projectID) {
         Optional <Project> p = this.projectDeo.findById(projectID);
         Project project = null;
         if (p.isPresent()){
@@ -56,6 +56,11 @@ public class ProjectServiceImpl implements ProjectService {
         project.setDisabled(true);
         project.setRemoved_at(new Date());
         this.projectDeo.save(project);
+        return "Removed Successfully";
+    }
+    @Override
+    public String deleteProjectById(int clientID) {
+        this.projectDeo.deleteById(clientID);
         return "Removed Successfully";
     }
 }
