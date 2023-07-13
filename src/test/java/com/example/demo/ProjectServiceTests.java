@@ -94,7 +94,7 @@ class ProjectServiceTests {
 	@Test
 	void testUpdateProject() {
 		String name = "updateProject";
-		Project updateProject = new Project(projectid, clientid, owner, teamLeads, null, name, "");
+		Project updateProject = new Project(projectid, clientid, /*owner,*/ teamLeads, null, name, "");
 
 		projectService.updateProject(updateProject);
 

@@ -15,8 +15,6 @@ public class Project {
     @Column(nullable = false)
     private int clientId;
     @Column(nullable = false)
-    private int owner;
-    @Column(nullable = false)
     private int[] teamLeads;
     @Column
     private int[] teamMembers;
@@ -31,18 +29,16 @@ public class Project {
     public Project() {
     }
 
-    public Project(int clientId,int owner, int[] teamLeads, int[] teamMembers, String name, String description) {
+    public Project(int clientId, int[] teamLeads, int[] teamMembers, String name, String description) {
         this.clientId = clientId;
-        this.owner = owner;
         this.teamLeads = teamLeads;
         this.teamMembers = teamMembers;
         this.name = name;
         this.description = description;
     }
-    public Project(int projectId, int clientId,int owner, int[] teamLeads, int[] teamMembers, String name, String description) {
+    public Project(int projectId, int clientId, int[] teamLeads, int[] teamMembers, String name, String description) {
         this.projectId = projectId;
         this.clientId = clientId;
-        this.owner = owner;
         this.teamLeads = teamLeads;
         this.teamMembers = teamMembers;
         this.name = name;
@@ -64,10 +60,6 @@ public class Project {
     public void setClientId(int clientId) {
         this.clientId = clientId;
     }
-
-    public int getOwner() {return owner;}
-
-    public void setOwner(int owner) {this.owner = owner;}
 
     public int[] getTeamLeads() {
         return teamLeads;
@@ -130,7 +122,6 @@ public class Project {
         return "Project{" +
                 "projectId=" + projectId +
                 ", clientId=" + clientId +
-                ", owner=" + owner +
                 ", teamLeads=" + Arrays.toString(teamLeads) +
                 ", teamMembers=" + Arrays.toString(teamMembers) +
                 ", name='" + name + '\'' +
